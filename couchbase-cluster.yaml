@@ -55,10 +55,14 @@ spec:
     name: data_services
     services:
     - data
+    volumeMounts:
+      default: couchbase
   - size: 2
     name: index_services
     services:
     - index
+    volumeMounts:
+      default: couchbase
   - size: 1
     name: query_services
     services:
