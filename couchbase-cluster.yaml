@@ -23,7 +23,7 @@ spec:
   buckets:
     managed: false
   cluster:
-    analyticsServiceMemoryQuota: 1Gi
+#    analyticsServiceMemoryQuota: 1Gi
     autoCompaction:
       databaseFragmentationThreshold:
         percent: 30
@@ -35,11 +35,11 @@ spec:
     autoFailoverMaxCount: 3
     autoFailoverOnDataDiskIssuesTimePeriod: 2m0s
     autoFailoverTimeout: 2m0s
-    dataServiceMemoryQuota: 512Mi
-    eventingServiceMemoryQuota: 256Mi
-    indexServiceMemoryQuota: 512Mi
+    dataServiceMemoryQuota: 2Gi
+#    eventingServiceMemoryQuota: 256Mi
+    indexServiceMemoryQuota: 2Gi
     indexStorageSetting: memory_optimized
-    searchServiceMemoryQuota: 256Mi
+#    searchServiceMemoryQuota: 256Mi
   networking:
     exposeAdminConsole: true 
     adminConsoleServiceTemplate:
@@ -52,14 +52,20 @@ spec:
         type: NodePort
   servers:
   - size: 3
-    name: all_services
+    name: data_services
     services:
     - data
+  - size: 2
+    name: index_services
+    services:
     - index
+  - size: 1
+    name: query_services
+    services:
     - query
-    - search
-    - eventing
-    - analytics
+#    - search
+#    - eventing
+#    - analytics
     volumeMounts:
       default: couchbase 
   enableOnlineVolumeExpansion: true
