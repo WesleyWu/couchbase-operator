@@ -52,26 +52,28 @@ spec:
         type: NodePort
   servers:
   - size: 3
-    name: data_services
+    name: data_index_query_services
     services:
     - data
-    volumeMounts:
-      default: couchbase
-  - size: 2
-    name: index_services
-    services:
     - index
+    - query
     volumeMounts:
       default: couchbase
-  - size: 1
-    name: query_services
-    services:
-    - query
+#  - size: 2
+#    name: index_services
+#    services:
+#    - index
+#    volumeMounts:
+#      default: couchbase
+#  - size: 1
+#    name: query_services
+#    services:
+#    - query
 #    - search
 #    - eventing
 #    - analytics
-    volumeMounts:
-      default: couchbase 
+#    volumeMounts:
+#      default: couchbase
   enableOnlineVolumeExpansion: true
   volumeClaimTemplates: 
   - metadata:
