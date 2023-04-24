@@ -47,19 +47,20 @@ spec:
       secretSource:
         serverSecretName: couchbase-server-tls
     dns:
-      domain: couchbase.svc.cluster.local
+      domain: couchbase.fungame.cloud
     exposeAdminConsole: true 
     adminConsoleServiceTemplate:
       spec:
         type: LoadBalancer
     exposedFeatures: 
-    - client
+      - xdcr
+      - client
     exposedFeatureServiceTemplate:
       spec:
         type: LoadBalancer
   servers:
-  - size: 3
-    name: data_index_query_services
+  - name: bj-local-data-index-query
+    size: 3
     services:
     - data
     - index
