@@ -41,19 +41,19 @@ spec:
     indexStorageSetting: memory_optimized
 #    searchServiceMemoryQuota: 256Mi
   networking:
-    tls:
-      rootCAs:
-      - couchbase-server-ca
-      secretSource:
-        serverSecretName: couchbase-server-tls
-    dns:
-      domain: couchbase.fungame.cloud
+#    tls:
+#      rootCAs:
+#      - couchbase-server-ca
+#      secretSource:
+#        serverSecretName: couchbase-server-tls
+#    dns:
+#      domain: couchbase.fungame.cloud
     exposeAdminConsole: true 
     adminConsoleServiceTemplate:
       spec:
         type: LoadBalancer
     exposedFeatures: 
-      - xdcr
+#      - xdcr
       - client
     exposedFeatureServiceTemplate:
       spec:
