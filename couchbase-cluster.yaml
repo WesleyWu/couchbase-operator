@@ -47,7 +47,7 @@ spec:
       secretSource:
         serverSecretName: couchbase-server-tls
     dns:
-      domain: my-cluster.example.com
+      domain: couchbase.svc.cluster.local
     exposeAdminConsole: true 
     adminConsoleServiceTemplate:
       spec:
