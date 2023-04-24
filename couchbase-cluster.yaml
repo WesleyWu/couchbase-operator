@@ -41,15 +41,22 @@ spec:
     indexStorageSetting: memory_optimized
 #    searchServiceMemoryQuota: 256Mi
   networking:
+    tls:
+      rootCAs:
+      - couchbase-server-ca
+      secretSource:
+        serverSecretName: couchbase-server-tls
+    dns:
+      domain: my-cluster.example.com
     exposeAdminConsole: true 
     adminConsoleServiceTemplate:
       spec:
-        type: NodePort
+        type: LoadBalancer
     exposedFeatures: 
     - client
     exposedFeatureServiceTemplate:
       spec:
-        type: NodePort
+        type: LoadBalancer
   servers:
   - size: 3
     name: data_index_query_services
@@ -82,4 +89,4 @@ spec:
       storageClassName: local-path 
       resources: 
         requests:
-          storage: 2Gi
+          storage: 1Gi
