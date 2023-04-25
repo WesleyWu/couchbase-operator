@@ -61,7 +61,7 @@ spec:
         type: NodePort
   servers:
   - name: bj-local-data-index-query
-    size: 1
+    size: 3
     services:
     - data
     - index
