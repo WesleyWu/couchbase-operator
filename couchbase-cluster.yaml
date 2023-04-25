@@ -61,7 +61,7 @@ spec:
         type: LoadBalancer
   servers:
   - name: bj-local-data-index-query
-    size: 3
+    size: 1
     services:
     - data
     - index
