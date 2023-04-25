@@ -41,24 +41,24 @@ spec:
     indexStorageSetting: memory_optimized
 #    searchServiceMemoryQuota: 256Mi
   networking:
-    tls:
-      rootCAs:
-      - couchbase-server-ca
-      secretSource:
-        serverSecretName: couchbase-server-tls
-        clientSecretName: couchbase-operator-tls
-    dns:
-      domain: couchbase.fungame.cloud
+#    tls:
+#      rootCAs:
+#      - couchbase-server-ca
+#      secretSource:
+#        serverSecretName: couchbase-server-tls
+#        clientSecretName: couchbase-operator-tls
+#    dns:
+#      domain: couchbase.fungame.cloud
     exposeAdminConsole: true 
     adminConsoleServiceTemplate:
       spec:
-        type: LoadBalancer
+        type: NodePort
     exposedFeatures: 
 #      - xdcr
       - client
     exposedFeatureServiceTemplate:
       spec:
-        type: LoadBalancer
+        type: NodePort
   servers:
   - name: bj-local-data-index-query
     size: 1
